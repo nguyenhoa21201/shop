@@ -1,0 +1,131 @@
+﻿@model CartModel
+
+<html>
+<head>
+    <title>Shopping Cart</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 20px;
+        }
+
+        h1 {
+            text-align: center;
+            color: #333;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+
+        th, td {
+            padding: 10px;
+            text-align: left;
+            border-bottom: 1px solid #ddd;
+        }
+
+        th {
+            background-color: #f5f5f5;
+        }
+
+        tbody tr:hover {
+            background-color: #f9f9f9;
+        }
+
+        tfoot td {
+            text-align: right;
+            font-weight: bold;
+        }
+
+        .actions {
+            margin-top: 20px;
+            text-align: right;
+        }
+
+            .actions button {
+                padding: 10px 20px;
+                font-size: 16px;
+                border: none;
+                border-radius: 4px;
+                background-color: #007bff;
+                color: #fff;
+                cursor: pointer;
+            }
+
+                .actions button:not(:last-child) {
+                    margin-right: 10px;
+                }
+
+                .actions button:hover {
+                    background-color: #0056b3;
+                }
+    </style>
+</head>
+<body>
+    <div class="about">
+        <h1>Shopping Cart</h1>
+
+        <table>
+            <thead>
+                <tr>
+                    <th>Product</th>
+                    <th>Price</th>
+                    <th>Quantity</th>
+                    <th>Subtotal</th>
+                    <th>Action</th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var item in Model.getAllItems())
+                {
+                    <tr>
+                        <td>@item.Name</td>
+                        <td>@item.Price</td>
+                        <td>
+                            @using (Html.BeginForm("UpdateQuantity", "cart", FormMethod.Post))
+                            {
+                                @Html.HiddenFor(m => item.Id)
+                                <div class="input-group quantity mx-auto" style="width: 100px;">
+                                    <div class="input-group-btn">
+                                        <button type="submit" class="btn btn-sm btn-primary btn-minus" name="btnUpdateQuantity" value="-">
+                                            <i class="fa fa-minus"></i>
+                                        </button>
+                                    </div>
+                                    <input type="text" class="form-control form-control-sm bg-secondary border-0 text-center" name="Quantity" value="@item.Quantity">
+                                    <div class="input-group-btn">
+                                        <button type="submit" class="btn btn-sm btn-primary btn-plus" name="btnUpdateQuantity" value="+">
+                                            <i class="fa fa-plus"></i>
+                                        </button>
+                                    </div>
+                                </div>
+                            }
+                        </td>
+                        <td>@item.lineTotal</td>
+                        <td>
+                            <button>Delete</button>
+                        </td>
+                    </tr>
+                }
+            </tbody>
+            <tfoot>
+                <tr>
+                    <td colspan="3">Total</td>
+                    <td>@Model.getTotal()</td>
+                    <td></td>
+                </tr>
+            </tfoot>
+        </table>
+        <div class="actions">
+            <a href="@Url.Action("index","home")">
+                <button>Continue Shopping</button>
+            </a>
+            <a href="@Url.Action("checkout","cart")">
+                <button>Checkout</button>
+            </a>
+        </div>
+
+    </div>
+</body>
+</html>

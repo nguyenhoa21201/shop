@@ -1,0 +1,46 @@
+﻿@page
+@model LoginModel
+
+@{
+    ViewData["Title"] = "Log in";
+    Layout = null;
+}
+
+<!DOCTYPE html>
+<!-- Created By CodingLab - www.codinglabweb.com -->
+<html lang="en" dir="ltr">
+<head>
+    <meta charset="utf-8">
+    <!----<title>Login Form Design | CodeLab</title>---->
+    <link rel="stylesheet" href="~/css/login.css">
+</head>
+<body>
+    <div class="wrapper">
+        <div class="title">Login Form</div>
+        <form id="account" method="post">
+            <div class="field">
+                <input asp-for="Input.Email" type="text" required>
+                <label asp-for="Input.Email">Email Address</label>
+            </div>
+            <div class="field">
+                <input asp-for="Input.Password" type="password" required>
+                <label asp-for="Input.Password">Password</label>
+            </div>
+            <div class="content">
+                <div class="checkbox">
+                    <input asp-for="Input.RememberMe" type="checkbox" id="remember-me">
+                    <label asp-for="Input.RememberMe" for="remember-me">Remember me</label>
+                </div>
+                <div class="pass-link"><a href="#">Forgot password?</a></div>
+            </div>
+            <div class="field">
+                <input type="submit" value="Login">
+            </div>
+            <div class="signup-link">Not a member? <a href="/identity/account/register">Signup now</a></div>
+        </form>
+    </div>
+</body>
+</html>
+@section Scripts {
+    <partial name="_ValidationScriptsPartial" />
+}

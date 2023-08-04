@@ -1,0 +1,84 @@
+﻿<div class="side-nav">
+    <div class="side-nav-inner">
+        <ul class="side-nav-menu scrollable">
+            <li class="nav-item dropdown open">
+                <a class="dropdown-toggle" asp-area="Admin" asp-controller="Home" asp-action="Index">
+                    <span class="icon-holder">
+                        <i class="anticon anticon-dashboard"></i>
+                    </span>
+                    <span class="title">Dashboard</span>
+                    <span class="arrow">
+                        <i class="arrow-icon"></i>
+                    </span>
+                </a>
+
+            </li>
+            
+            <li class="nav-item dropdown">
+                <a class="dropdown-toggle" href="javascript:void(0);">
+                    <span class="icon-holder">
+                        <i class="anticon anticon-build"></i>
+                    </span>
+                    <span class="title">QL sản phẩm </span>
+                    <span class="arrow">
+                        <i class="arrow-icon"></i>
+                    </span>
+                </a>
+                <ul class="dropdown-menu">
+                    <li>
+                        <a asp-area="Admin" asp-controller="Product" asp-action="ViewAllProducts">Danh sách sản phẩm</a>
+                    </li>
+                    <li>
+                        <a asp-area="Admin" asp-controller="Home" asp-action="ViewAllCategories">Danh mục sản phẩm</a>
+                    </li>
+                    <li>
+                        <a asp-area="Admin" asp-controller="Brand" asp-action="ViewAllBrands">Danh Sách thương hiệu</a>
+                    </li>
+                </ul>
+            </li>
+            <li class="nav-item dropdown">
+                <a class="dropdown-toggle" href="javascript:void(0);">
+                    <span class="icon-holder">
+                        <i class="anticon anticon-hdd"></i>
+                    </span>
+                    <span class="title">QL khách hàng</span>
+                    <span class="arrow">
+                        <i class="arrow-icon"></i>
+                    </span>
+                </a>
+                <ul class="dropdown-menu">
+                    <li>
+                        <a asp-area="Admin" asp-controller="Customer" asp-action="ViewAllCustomers">Danh sách khách hàng</a>
+                    </li>
+                   
+
+                </ul>
+            </li>
+
+            <li class="nav-item dropdown">
+                <a class="dropdown-toggle" href="javascript:void(0);">
+                    <span class="icon-holder">
+                        <i class="anticon anticon-table"></i>
+                    </span>
+                    <span class="title">QL đơn hàng</span>
+                    <span class="arrow">
+                        <i class="arrow-icon"></i>
+                    </span>
+                </a>
+                <ul class="dropdown-menu">
+                    <li>
+                        <a asp-area="Admin" asp-controller="Order" asp-action="ViewAllOrder">QL Order</a>
+                    </li>
+                  
+                    <li>
+                        <a asp-area="Admin" asp-controller="OrderDetail" asp-action="ViewAllOrderDetail">Ql  OrderDetail </a>
+                    </li>
+
+                </ul>
+            </li>
+
+
+
+        </ul>
+    </div>
+</div>

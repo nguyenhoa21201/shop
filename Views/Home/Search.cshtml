@@ -1,0 +1,60 @@
+﻿@inject ICategoryRepository categoryRepository
+
+
+<!-- about section -->
+<!-- Our  Glasses section -->
+
+
+<div class="about">
+    <div class="glasses">
+        
+        <form method="get" action="/Home/Search">
+            <input style="height: 38px;" type="text" name="productName" placeholder="Nhập từ khóa tìm kiếm" />
+            <button style="border:1px solid black; height:38px;margin-right: 50px;margin-left: -4px;" type="submit">Search</button>
+        </form>
+        <li class="dropdown dropdown-small">
+            <a data-toggle="dropdown" data-hover="dropdown" class="dropdown-toggle" href="#"><span class="key">Categories</span><span class="value">Categories </span><b class="caret"></b></a>
+            <ul class="dropdown-menu">
+
+
+                @foreach (var item in categoryRepository.GetAll())
+                {
+                    <li><a asp-controller="Home" asp-action="findProductByCart" asp-route-id="@item.CategoryId">@item.CategoryName</a></li>
+                }
+            </ul>
+        </li>
+
+
+        @model List< project.Models.Product>
+        <div class="container-fluid">
+            <div class="row">
+                @foreach (var item in Model)
+                {
+                    <div class="col-xl-3 col-lg-3 col-md-6 col-sm-6">
+                        <div class="glasses_box">
+                            <figure><img src="~/images/@item.ProductImagePath" alt="#" /></figure>
+                            <h3><span class="blu">$</span>@item.Price</h3>
+                            <p>@item.ProductName</p>
+                            <li class="nav-item">
+                                <a class="nav-link" asp-controller="Home" asp-action="Single" asp-route-id="@item.ProductId">Xem Ngay</a>
+                            </li>
+                        </div>
+                    </div>
+                }
+
+
+
+                <div class="col-md-12">
+                    <a class="read_more" href="#">Read More</a>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- end Our  Glasses section -->
+    <!-- Our shop section -->
+  
+</div>
+<!-- end Our shop section -->
+<!-- clients section -->
+
+

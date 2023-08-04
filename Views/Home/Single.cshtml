@@ -1,0 +1,25 @@
+﻿@model project.Models.Product
+@{
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+  
+
+<div class="about">
+    <div class="container">
+        <div class="row d_flex">
+            <div class="col-md-5">
+                <div class="about_img">
+                    <figure><img src="~/images/@Model.ProductImagePath" alt="#" /></figure> 
+                </div>
+            </div>
+            <div class="col-md-7">
+                <div class="titlepage">
+                    <h2>@Model.ProductName</h2>
+                    <p> @Model.Description</p>
+                    <h3 class="blu"><span class="blu">$</span>@Model.Price</h3>
+                </div>
+                <a class="read_more" href="@Url.Action("AddToCart","Cart",new {id = Model.ProductId})">Add Cart</a>
+            </div>
+        </div>
+    </div>
+</div>

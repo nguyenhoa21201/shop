@@ -1,0 +1,33 @@
+﻿@{
+    Layout = "~/Areas/Admin/Views/Shared/_AdminLayout.cshtml";
+}
+
+@model IEnumerable<project.Models.Role>
+
+<p>
+    <a asp-action="CreateRole">Create New</a>
+</p>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.RoleName)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.RoleName)
+            </td>
+            <td>
+                <a asp-action="EditRole" asp-route-id="@item.RoleId">Edit</a> |
+                <a asp-action="Details" asp-route-id="@item.RoleId">Details</a> |
+                <a asp-action="DeleteRole" asp-route-id="@item.RoleId">Delete</a>
+            </td>
+        </tr>
+}
+    </tbody>
+</table>
